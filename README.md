@@ -2,14 +2,15 @@
 ## Application to manage triage in a hospital
 
 ### 1. It is planned to create a manager for the triage area of a hospital, which classifies patients by priority and waiting time, so that they are attended in the shortest time. The following endpoints are proposed for the backend: 
-    a. A patient is registered and assigned a priority (Metadata automatically) 
+
 ##     POST / patient
-    b. Get all patients in whitelist ordered by asc createdAt 
+    a. A patient is registered and assigned a priority (Metadata automatically) 
 ##     GET /patient 
-    c. Update the data of a patient registred when the info haved a error.
+    b. Get all patients in whitelist ordered by asc createdAt 
 ##     PUT/ patient
-    d. Delete a patient of the whitelist when they have already been treated.
+    c. Update the data of a patient registred when the info haved a error.
 ##     DELETE/ patient
+    d. Delete a patient of the whitelist when they have already been treated.
 
 ### 2. It is proposed to create a simple U / I from where patients are registered, the list of prioritized patients can be viewed, patient data can be edited info and deleted once they have been treated. The following technologies will be used for the development of the forntend:
       a. React
