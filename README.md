@@ -17,11 +17,12 @@
       b. Emerald UI
 
 ### 3.  To assign the priority of a patient, the following items are taken into account:
-   1: Resuscitation
-   2: Emergency
-   3: Urgency
-   4: Minor Urgency
-   5: No Urgency
+      
+      - 1: Resuscitation
+      - 2: Emergency
+      - 3: Urgency
+      - 4: Minor Urgency
+      - 5: No Urgency
 
 ### Tech stack: 
     - NodeJS 
