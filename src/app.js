@@ -9,7 +9,10 @@ const app = express();
 const patientsRoutes = require("./routes/patients");
 
 // settings
-app.set("port", process.env.PORT || 3000);
+if( process.env.NODE_ENV !== "test"){
+  app.set("port", process.env.PORT || 3000);
+}
+
 
 // middlewares
 app.use(morgan("dev"));
@@ -137,3 +140,5 @@ app.use("/", patientsRoutes);
 app.listen(app.get("port"), () => {
   console.log(`server on port ${app.get("port")}`);
 });
+
+module.exports = app;
