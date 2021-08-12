@@ -8,7 +8,7 @@ jobs:
   pull_request_master:
     runs-on: ubuntu-latest
     services:
-      db:
+      mysql:
         image: mysql:5.7
         ports:
           - 3306:3306
@@ -16,8 +16,7 @@ jobs:
           MYSQL_DATABASE: patientsdb
           MYSQL_USER: patientsuser
           MYSQL_PASSWORD: patients
-          MYSQL_ROOT_PASSWORD: patients
-        options:  --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options:  --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 5
     
     steps:
       - uses: actions/checkout@v2
