@@ -1,12 +1,7 @@
-const patientRepository = require("../repository/patient-repository");
+const patientRepository = require('../repository/patient-repository');
 
-const saveANewPatient = (data) => {
-    return patientRepository.save(data);
-};
+const saveANewPatient = (data) => patientRepository.save(data);
 
 module.exports = {
-    saveANewPatient
+  saveANewPatient,
 };
-
-
-

@@ -1,8 +1,7 @@
-const { findAllPatients } = require("../service/find_all_patients");
-const { saveANewPatient } = require("../service/save_new_patient");
-const { updateDataPatient } = require("../service/update_data_patient");
-const { deleteAPatient } = require("../service/delete_patient");
-const pool = require("../connection");
+const { findAllPatients } = require('../service/find_all_patients');
+const { saveANewPatient } = require('../service/save_new_patient');
+const { updateDataPatient } = require('../service/update_data_patient');
+const { deleteAPatient } = require('../service/delete_patient');
 
 const controller = {};
 
@@ -22,7 +21,7 @@ controller.findById = async (req, res) => {
 controller.save = async (req, res) => {
   const data = req.body;
   const patient = await saveANewPatient(data);
-  res.send("The patient has been created");
+  res.send('The patient has been created');
 };
 
 controller.update = async (req, res) => {

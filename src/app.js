@@ -1,37 +1,36 @@
-const express = require("express"),
-  morgan = require("morgan"),
-  swaggerJsDoc = require("swagger-jsdoc"),
-  swaggerUi = require("swagger-ui-express");
+const express = require('express');
+const morgan = require('morgan');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const app = express();
 
 // importing routes
-const patientsRoutes = require("./routes/patients");
+const patientsRoutes = require('./routes/patients');
 
 // settings
-if( process.env.NODE_ENV !== "test"){
-  app.set("port", process.env.PORT || 3000);
+if (process.env.NODE_ENV !== 'test') {
+  app.set('port', process.env.PORT || 3000);
 }
 
-
 // middlewares
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(express.json());
 
-//Documentation options
+// Documentation options
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
-      title: "Triage management",
-      description: "API that manage the triage area on the hospital",
-      servers: ["http://localhost:3000"],
+      title: 'Triage management',
+      description: 'API that manage the triage area on the hospital',
+      servers: ['http://localhost:3000'],
     },
   },
-  apis: ["src/app.js"],
+  apis: ['src/app.js'],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
@@ -57,8 +56,8 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  * @swagger
  * /new-patient:
  *  post:
- *      summary: Create a new patient 
- *      description: Create a new patient recording the basic data as his time of admission and its priority. The priority of the sick based on the table of triage 
+ *      summary: Create a new patient
+ *      description: Create a new patient. The priority of the sick based on the table of triage
  *                   (1:Resuscitation, 2:Emergency, 3:Urgency, 4:Minor Urgency, 5:Without Urgency)
  *      tags: [Patients]
  *      parameters:
@@ -134,11 +133,11 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  */
 
 // routes
-app.use("/", patientsRoutes);
+app.use('/', patientsRoutes);
 
 // starting the server
-app.listen(app.get("port"), () => {
-  console.log(`server on port ${app.get("port")}`);
+app.listen(app.get('port'), () => {
+  console.log(`server on port ${app.get('port')}`);
 });
 
 module.exports = app;
