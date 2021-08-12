@@ -13,9 +13,9 @@ jobs:
         ports:
           - 3306:3306
         env:
-          MYSQL_DATABASE: "${DATABASE_NAME}"
-          MYSQL_USER: "${DATABASE_USERNAME}"
-          MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
+          MYSQL_DATABASE: ${DATABASE_NAME}
+          MYSQL_USER: ${DATABASE_USERNAME}
+          MYSQL_PASSWORD: ${DATABASE_PASSWORD}
         options: --health-cmd 'mysqladmin ping' --health-interval 10s --health-timeout 5s --health-retries 5
     
     steps:
