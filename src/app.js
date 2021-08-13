@@ -41,7 +41,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
- * /:
+ * /patients:
  *  get:
  *      summary: Get the list of patients and order them by priority and waiting time
  *      description: Get the list of patients and order them by priority and waiting time
@@ -54,7 +54,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
- * /new-patient:
+ * /patients:
  *  post:
  *      summary: Create a new patient
  *      description: Create a new patient. The priority of the sick based on the table of triage
@@ -82,7 +82,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
- * /update-patient/{id}:
+ * /patients/{id}:
  *  patch:
  *      summary: Update a patient's information using the id
  *      tags: [Patients]
@@ -115,7 +115,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 /**
  * @swagger
- * /delete-patient/{id}:
+ * /patients/{id}:
  *  delete:
  *      summary: Delete a patient that has the ID that is supplied
  *      tags: [Patients]
