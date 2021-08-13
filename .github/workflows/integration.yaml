@@ -12,9 +12,9 @@ jobs:
         image: mysql:5.7
         env:
             MYSQL_ROOT_PASSWORD: patients
-            MYSQL_DATABASE: patientsdb
-            MYSQL_USER: patientsuser
-            MYSQL_PASSWORD: patients
+            MYSQL_DATABASE: "${DATABASE_NAME}"
+            MYSQL_USER: "${DATABASE_USERNAME}"
+            MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
         ports:
         - 3306:3306
         options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
@@ -31,10 +31,10 @@ jobs:
       - name: Run Migrations
         run: npm run migration:run
         env:
-          DATABASE_USERNAME: patientsuser
-          DATABASE_PASSWORD: patients
+          DATABASE_USERNAME: "${DATABASE_USERNAME}"
+          DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
           DATABASE_HOST: 127.0.0.1
           DATABASE_PORT: 3306
-          DATABASE_NAME: patientsdb
+          DATABASE_NAME: "${DATABASE_NAME}"
       - name: Run Tests
         run: npm test
