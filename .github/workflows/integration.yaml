@@ -1,0 +1,40 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  pull_request_master:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+            MYSQL_ROOT_PASSWORD: patients
+            MYSQL_DATABASE: patientsdb
+            MYSQL_USER: patientsuser
+            MYSQL_PASSWORD: patients
+        ports:
+        - 3306:3306
+        options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
+    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Lint
+        run: npm run lint
+      - name: Run Migrations
+        run: npm run migration:run
+        env:
+          DATABASE_USERNAME: patientsuser
+          DATABASE_PASSWORD: patients
+          DATABASE_HOST: 127.0.0.1
+          DATABASE_PORT: 3306
+          DATABASE_NAME: patientsdb
+      - name: Run Tests
+        run: npm test
