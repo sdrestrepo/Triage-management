@@ -6,7 +6,10 @@
     "test": "jest",
     "dev": "nodemon src/app.js",
     "lint": "eslint \"{src,apps,libs,test}/**/*.js\"",
-    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.js\" --fix"
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*.js\" --fix",
+    "migration:create": "knex migrate:make name",
+    "migration:run": "knex migrate:latest",
+    "migration:revert": "knex migrate:rollback"
   },
   "keywords": [],
   "author": "",
