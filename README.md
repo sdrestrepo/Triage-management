@@ -112,4 +112,4 @@ $ npm run test
 
 ## 🐞 Did you find some issue o improvment?
 
-Feel free to contribute and do whatever to consider better to this project.
+Feel free to contribute and do whatever to consider better to this project..
