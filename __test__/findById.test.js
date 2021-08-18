@@ -1,24 +1,12 @@
-const request = require('supertest');
-const { customAlphabet } = require('nanoid');
-const app = require('../src/app');
+jest.mock('../src/repository/patient-repository');
+const service = require('../src/service/find_by_id');
 
 describe('GET /patients/:id', () => {
   it('should get a patient whith this id', async () => {
-    const nanoid = customAlphabet('1234567890', 4);
-    const patientId = nanoid(4);
-    const patient = {
-      id: patientId,
-      name: 'John',
-      lastName: 'Doe',
-      identification: '007',
-      priority: '3',
-      entry_time: '2021-08-11 17:27:49',
-    };
-    await request(app).post('/patients').send(patient);
-    const response = await request(app).get(`/patients/${patientId}`);
-    expect(response.error).toBe(false);
-    expect(response.status).toBe(200);
-    expect(response.body).not.toBeNull();
-    expect(response.body.id).toBe(parseInt(patientId, 10));
+    const response = await service.findById(4);
+
+    expect(response).not.toBeNull();
+    expect(response).not.toBeUndefined();
+    expect(response.id).toBe(4);
   });
 });

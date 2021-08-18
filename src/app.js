@@ -76,7 +76,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
  *                 type: integer
  *
  *      responses:
- *              '200':
+ *              '201':
  *                 description: A succesful response
  */
 

@@ -2,9 +2,11 @@ const pool = require('../connection');
 const Patient = require('../model/patient');
 
 findAll = (pageNumber, pageSize) => new Promise((resolve, reject) => {
+  const newPage = parseInt(pageNumber, 10);
+  const newSize = parseInt(pageSize, 10);
   pool.query(
     'SELECT * FROM patients ORDER BY priority ASC, entry_time ASC LIMIT ?, ?',
-    [pageNumber, pageSize],
+    [newPage, newSize],
     (error, rows) => {
       if (error) {
         return reject(error);
@@ -61,7 +63,7 @@ update = async (id, newData) => new Promise((resolve, reject) => {
       if (error) {
         return reject(error);
       }
-      return resolve('The patient has been update');
+      return resolve(JSON.stringify('The patient has been update'));
     },
   );
 });
@@ -71,7 +73,7 @@ deletePatient = async (id) => new Promise((resolve, reject) => {
     if (error) {
       return reject(error);
     }
-    return resolve('The patient has been deleted');
+    return resolve(JSON.stringify('The patient has been delete'));
   });
 });
 

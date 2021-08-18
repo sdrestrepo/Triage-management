@@ -7,8 +7,8 @@ const { findById } = require('../service/find_by_id');
 const controller = {};
 
 controller.list = async (req, res) => {
-  const pageNumber = req.params.pageNumber || 0;
-  const pageSize = req.params.pageSize || 10;
+  const pageNumber = req.query.pageNumber || 0;
+  const pageSize = req.query.pageSize || 10;
   const patients = await findAllPatients(pageNumber, pageSize);
   res.send(patients);
 };
@@ -22,7 +22,7 @@ controller.findById = async (req, res) => {
 controller.save = async (req, res) => {
   const data = req.body;
   const patient = await saveANewPatient(data);
-  res.send('The patient has been created');
+  res.send(patient);
 };
 
 controller.update = async (req, res) => {
