@@ -36,7 +36,6 @@ describe('findAllPatients should', () => {
     expect(patients.length).toBe(2);
 
     expect(patients[0].id).toBe(PATIENTS_LIST[0].id);
-    // TODO complete los otros attributes
 
     expect(findAllMock.calledOnce).toBe(true);
   });
